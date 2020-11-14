@@ -23,3 +23,35 @@ body {
   border-radius: 5px;
   padding: 0 50px;
 }
+
+.register-btn-mini {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #fff;
+  background: #00bcd4;
+  transition: .4s;
+  border-radius: 5px;
+  padding: 0 50px;
+}
+
+button a {
+  color: white;
+}
+
+a {
+  /* color: white; */
+}
+
+a:hover {
+  /* color: white; */
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.circle {
+  border-radius:50%;
+}
