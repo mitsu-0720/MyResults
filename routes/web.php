@@ -19,6 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/{username}', 'ViewsController@home');
+Route::get('/home', 'ViewsController@home');
+
+Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
+
+Route::get('/users/edit/{user}', 'UsersController@edit');
+Route::patch('/users/update', 'UsersController@update');
+
+

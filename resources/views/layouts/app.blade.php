@@ -77,11 +77,11 @@
                                 <a class="nav-link mt-2 mr-1" href="#"><i class="fas fa-hashtag text-dark fs-24"></i></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><img src="/storage/dummy.png" width="40px" height="40px" class="circle"><!-- {{ Auth::user()->path }}  --><!-- <span class="caret"></span> --></a>
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><img src="{{ Auth::user()->path }}" width="40px" height="40px" class="circle"><!-- {{ Auth::user()->path }}  --><!-- <span class="caret"></span> --></a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">マイページ</a>
-                                    <a class="dropdown-item" href="#">プロフィール編集</a>
+                                    <a class="dropdown-item" href="/home">マイページ</a>
+                                    <a class="dropdown-item" href="{{ action('UsersController@edit', Auth::user()->id) }}">プロフィール編集</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">ログアウト</a>

@@ -18,6 +18,25 @@ class PostsController extends Controller
         $this->middleware('auth');
     }
 
+    public function show(Post $post) {
+        $post->load('likes');
+        $defaultCount = count($post->likes);
+        $defaultLiked = $post->likes->where('user_id', \Auth::user()->id)->first();
+        if(empty($defaultLiked)) {
+            $defaultLiked == false;
+        } else {
+            $defaultLiked == true;
+        }
+
+        $comments = Comment::where('post_id', $post->id)->latest()->get();
+        return view('posts.show')->with([
+            'post' => $post,
+            'comments' => $comments,
+            'defaultLiked' => $defaultLiked,
+            'defaultCount' => $defaultCount,
+        ]);
+    }
+
     public function create() {
         return view('posts.create');
     }
