@@ -30,9 +30,15 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                @guest
                 <a class="navbar-brand" href="{{ url('/') }}">
                     My Results
                 </a>
+                @else
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    My Results
+                </a>
+                @endguest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -59,19 +65,31 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link mt-2 mr-1" href="{{ action('PostsController@create') }}"><i class="fas fa-camera text-dark fs-24"></i></a>
+                            <li class="nav-item">
+                                <a class="nav-link mt-2 mr-1" href="#"><i class="fas fa-user-friends text-dark fs-24"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mt-2 mr-1" href="#"><i class="fas fa-search text-dark fs-24"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mt-2 mr-1" href="#"><i class="fas fa-hashtag text-dark fs-24"></i></a>
+                            </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><img src="storage/dummy.png" width="40px" height="40px" class="circle"><!-- {{ Auth::user()->path }}  --><!-- <span class="caret"></span> --></a>
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><img src="/storage/dummy.png" width="40px" height="40px" class="circle"><!-- {{ Auth::user()->path }}  --><!-- <span class="caret"></span> --></a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">マイページ</a>
+                                    <a class="dropdown-item" href="#">プロフィール編集</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                                     document.getElementById('logout-form').submit();">ログアウト</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+
                                 </div>
                             </li>
                         @endguest

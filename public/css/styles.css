@@ -38,20 +38,41 @@ body {
   padding: 0 50px;
 }
 
+input[type="file"] {
+  display: none;
+}
+
+.label-pic {
+  /* padding: 10px 40px; */
+  color: fuchsia;
+  border: 2px solid fuchsia;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+}
+
 button a {
   color: white;
 }
 
-a {
-  /* color: white; */
-}
-
 a:hover {
-  /* color: white; */
   opacity: 0.8;
   text-decoration: none;
 }
 
+textarea {
+  border-radius: 10px;
+  border: 1px soloi #ccc;
+}
+
 .circle {
   border-radius:50%;
+}
+
+.fs-16 {
+  font-size:16px;
+}
+
+.fs-24 {
+  font-size:24px;
 }
