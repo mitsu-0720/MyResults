@@ -7,7 +7,7 @@
             <img src="{{ Auth::user()->path }}" width="100px" height="100px" class="circle">
         </div>
         <div class="col-md-6 bg-info pl-4">
-            <h1 class="h4">{{ Auth::user()->name }}<span class="fs-12"> ({{ Auth::user()->username }})</span></h1>
+            <h1 class="h4">{{ Auth::user()->name }} ({{ Auth::user()->username }})</h1>
             <p>フォロー 0 フォロワー0 {{ count(Auth::user()->posts) }}件の投稿</p>
             <p>{{ Auth::user()->detail }}</p>
         </div>
