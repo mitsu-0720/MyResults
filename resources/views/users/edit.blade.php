@@ -19,7 +19,7 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-md-3 col-form-label text-md-right fs-16">画像</label>
+              <label class="col-md-3 col-form-label text-md-right fs-16">アイコン</label>
               <edit-preview-component
               :post-path = "{{ json_encode($user->path) }}"
               ></edit-preview-component>

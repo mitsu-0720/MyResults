@@ -1,8 +1,8 @@
 <template>
       <div class="col-md-6">
-          <img v-if="data.image" :src="data.image" width="60px" height="60px" class="mt-2 circle">
-          <img v-else :src="postPath" width="60px" height="60px" class="mt-2 circle">
-          <label for="path" class="col-form-label text-center label-pic mt-3">画像変更</label>
+          <img v-if="data.image" :src="data.image" width="100%" class="mt-2">
+          <img v-else :src="postPath" width="100%" class="mt-2">
+          <label for="path" class="col-form-label text-center label-pic mt-3"><i class="fas fa-camera fs-16 mr-2"></i>画像変更</label>
           <input id="path" name="path" type="file" ref="file" @change="setImage"/>
       </div>
 </template>

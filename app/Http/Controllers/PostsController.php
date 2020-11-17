@@ -60,4 +60,8 @@ class PostsController extends Controller
         // session()->flash('flash_message', '投稿が完了しました');
         return redirect('/home');
     }
+
+    public function edit(Post $post) {
+        return view('posts.edit')->with('post', $post);
+    }
 }

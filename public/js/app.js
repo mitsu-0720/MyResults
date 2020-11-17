@@ -1899,6 +1899,54 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPostPreviewComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPostPreviewComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    postPath: {
+      type: String
+    }
+  },
+  data: function data() {
+    return {
+      data: {
+        image: '',
+        name: ""
+      }
+    };
+  },
+  methods: {
+    setImage: function setImage(e) {
+      var files = this.$refs.file;
+      var fileImg = files.files[0];
+
+      if (fileImg.type.startsWith("image/")) {
+        this.data.image = window.URL.createObjectURL(fileImg);
+        this.data.name = fileImg.name;
+        this.data.type = fileImg.type;
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPreviewComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPreviewComponent.vue?vue&type=script&lang=js& ***!
@@ -37597,6 +37645,62 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-6" }, [
+    _vm.data.image
+      ? _c("img", {
+          staticClass: "mt-2",
+          attrs: { src: _vm.data.image, width: "100%" }
+        })
+      : _c("img", {
+          staticClass: "mt-2",
+          attrs: { src: _vm.postPath, width: "100%" }
+        }),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("input", {
+      ref: "file",
+      attrs: { id: "path", name: "path", type: "file" },
+      on: { change: _vm.setImage }
+    })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-form-label text-center label-pic mt-3",
+        attrs: { for: "path" }
+      },
+      [_c("i", { staticClass: "fas fa-camera fs-16 mr-2" }), _vm._v("画像変更")]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPreviewComponent.vue?vue&type=template&id=02f0b1aa&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPreviewComponent.vue?vue&type=template&id=02f0b1aa& ***!
@@ -37613,10 +37717,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-6" }, [
+    _vm.data.image
+      ? _c("img", {
+          staticClass: "mt-2 circle",
+          attrs: { src: _vm.data.image, width: "60px", height: "60px" }
+        })
+      : _c("img", {
+          staticClass: "mt-2 circle",
+          attrs: { src: _vm.postPath, width: "60px", height: "60px" }
+        }),
+    _vm._v(" "),
     _c(
       "label",
       {
-        staticClass: "col-form-label text-center label-pic",
+        staticClass: "col-form-label text-center label-pic mt-3",
         attrs: { for: "path" }
       },
       [_vm._v("画像変更")]
@@ -37626,17 +37740,7 @@ var render = function() {
       ref: "file",
       attrs: { id: "path", name: "path", type: "file" },
       on: { change: _vm.setImage }
-    }),
-    _vm._v(" "),
-    _vm.data.image
-      ? _c("img", {
-          staticClass: "mt-2",
-          attrs: { src: _vm.data.image, width: "100%" }
-        })
-      : _c("img", {
-          staticClass: "mt-2",
-          attrs: { src: _vm.postPath, width: "100%" }
-        })
+    })
   ])
 }
 var staticRenderFns = []
@@ -49946,6 +50050,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 Vue.component('preview-component', __webpack_require__(/*! ./components/PreviewComponent.vue */ "./resources/js/components/PreviewComponent.vue")["default"]);
 Vue.component('edit-preview-component', __webpack_require__(/*! ./components/EditPreviewComponent.vue */ "./resources/js/components/EditPreviewComponent.vue")["default"]);
+Vue.component('edit-post-preview-component', __webpack_require__(/*! ./components/EditPostPreviewComponent.vue */ "./resources/js/components/EditPostPreviewComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50000,6 +50105,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPostPreviewComponent.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/EditPostPreviewComponent.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditPostPreviewComponent_vue_vue_type_template_id_7ad5e7ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea& */ "./resources/js/components/EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea&");
+/* harmony import */ var _EditPostPreviewComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditPostPreviewComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/EditPostPreviewComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditPostPreviewComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditPostPreviewComponent_vue_vue_type_template_id_7ad5e7ea___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditPostPreviewComponent_vue_vue_type_template_id_7ad5e7ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditPostPreviewComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPostPreviewComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/EditPostPreviewComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPostPreviewComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditPostPreviewComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPostPreviewComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPostPreviewComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPostPreviewComponent_vue_vue_type_template_id_7ad5e7ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPostPreviewComponent.vue?vue&type=template&id=7ad5e7ea&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPostPreviewComponent_vue_vue_type_template_id_7ad5e7ea___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPostPreviewComponent_vue_vue_type_template_id_7ad5e7ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

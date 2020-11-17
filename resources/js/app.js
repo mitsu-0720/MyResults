@@ -36,6 +36,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // Vue.component('modal-component', require('./components/ModalComponent.vue').default);
 Vue.component('preview-component', require('./components/PreviewComponent.vue').default);
 Vue.component('edit-preview-component', require('./components/EditPreviewComponent.vue').default);
+Vue.component('edit-post-preview-component', require('./components/EditPostPreviewComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -44,8 +44,8 @@ input[type="file"] {
 
 .label-pic {
   /* padding: 10px 40px; */
-  color: fuchsia;
-  border: 2px solid fuchsia;
+  color: #66cccc;
+  border: 2px solid #66cccc;
   cursor: pointer;
   width: 100%;
   border-radius: 10px;
@@ -62,7 +62,9 @@ a:hover {
 
 textarea {
   border-radius: 10px;
-  border: 1px soloi #ccc;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 100%;
 }
 
 .circle {
@@ -70,11 +72,15 @@ textarea {
 }
 
 .fs-12 {
-  font-size:16px;
+  font-size:12px;
 }
 
 .fs-16 {
   font-size:16px;
+}
+
+.fs-18 {
+  font-size:18px;
 }
 
 .fs-20 {
@@ -83,4 +89,8 @@ textarea {
 
 .fs-24 {
   font-size:24px;
+}
+
+.display-none {
+  display: none;
 }
