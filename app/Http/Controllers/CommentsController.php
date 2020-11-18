@@ -21,4 +21,17 @@ class CommentsController extends Controller
         $post->comments()->save($comment);
         return redirect()->action('PostsController@show', $post);
     }
+
+    public function edit(Post $post, Comment $comment) {
+        return view('comments.edit')->with([
+            'post' => $post,
+            'comment' => $comment,
+        ]);
+    }
+
+    public function update(Request $request, Comment $comment) {
+        $comment->body = $request->body;
+        $comment->save();
+        return redirect('/home');
+    }
 }

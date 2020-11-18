@@ -64,4 +64,21 @@ class PostsController extends Controller
     public function edit(Post $post) {
         return view('posts.edit')->with('post', $post);
     }
+
+    public function update(Request $request, Post $post) {
+        // 画像変更の確認
+        if(!empty($request->path)) {
+            $file = $request->file('path');
+            $filename = $file->getClientOriginalName();
+            $request->file('path')->storeAs('public',$filename);
+            $post->path = '/storage/' . $filename;
+        }else {
+            $post->path = $post->path;
+        }
+        $post->detail = $request->detail;
+        $post->save();
+        // $user->posts()->save($post);
+        // session()->flash('flash_message', '投稿が完了しました');
+        return redirect('/home');
+    }
 }

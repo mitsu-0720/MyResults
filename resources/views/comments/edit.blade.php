@@ -4,22 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-8 bg-white pb-4">
-          <h1 class="text-center pt-4 pb-4">編集</h1>
+          <h1 class="text-center pt-4 pb-4">コメント編集</h1>
 
-          <form action="{{ url('/posts', $post->id) }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ url('/comments', $comment->id) }}" method="POST">
           @csrf
           @method('PATCH')
 
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right fs-16">画像</label>
-            <edit-post-preview-component
-            :post-path = "{{ json_encode($post->path) }}"
-            ></edit-post-preview-component>
-          </div>
-
-          <div class="form-group row">
             <label class="col-md-4 col-form-label text-md-right fs-16">コメント</label>
-            <textarea name="detail" class="col-md-6 offset-md-3" cols="20" rows="5">{{ old('detail', $post->detail) }}</textarea>
+            <textarea name="body" class="col-md-6 offset-md-3" cols="20" rows="5">{{ old('body', $comment->body) }}</textarea>
           </div>
 
           <div class="text-center pt-4">

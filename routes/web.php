@@ -25,8 +25,11 @@ Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/edit/{post}', 'PostsController@edit');
+Route::patch('/posts/{post}', 'PostsController@update');
 
-Route::post('/post/{post}/comments', 'CommentsController@store');
+Route::post('/posts/{post}/comments', 'CommentsController@store');
+Route::get('/comments/edit/{comment}', 'CommentsController@edit');
+Route::patch('/comments/{comment}', 'CommentsController@update');
 
 Route::get('/users/edit/{user}', 'UsersController@edit');
 Route::patch('/users/update', 'UsersController@update');

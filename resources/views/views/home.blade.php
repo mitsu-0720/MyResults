@@ -3,14 +3,20 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-2 bg-white d-flex align-items-center justify-content-center">
-            <img src="{{ Auth::user()->path }}" width="100px" height="100px" class="circle">
-        </div>
-        <div class="col-md-6 bg-info pl-4">
-            <h1 class="h4">{{ Auth::user()->name }} ({{ Auth::user()->username }})</h1>
-            <p>フォロー 0 フォロワー0 {{ count(Auth::user()->posts) }}件の投稿</p>
-            <p>{{ Auth::user()->detail }}</p>
-        </div>
+
+        <!-- プロフィール部分 -->
+        <!-- <section> -->
+            <div class="col-md-2 bg-white d-flex align-items-center justify-content-center">
+                <img src="{{ Auth::user()->path }}" width="100px" height="100px" class="circle">
+            </div>
+            <div class="col-md-6 bg-info pl-4">
+                <h1 class="h4">{{ Auth::user()->name }} ({{ Auth::user()->username }})</h1>
+                <p>フォロー 0 フォロワー0 {{ count(Auth::user()->posts) }}件の投稿</p>
+                <p>{{ Auth::user()->detail }}</p>
+            </div>
+        <!-- </section> -->
+
+        <!-- 投稿部分 -->
         <div class="col-md-8 mt-4 bg-white">
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                 <li class="nav-item">

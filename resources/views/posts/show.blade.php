@@ -14,11 +14,11 @@
               @if($post->user->id == Auth::user()->id)
               <div class="col-6">
                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  <p class="text-right mb-0 mt-1"><i class="fas fa-ellipsis-h fs-24"></i></p>
+                  <p class="text-right mb-0 mt-1"><i class="fas fa-ellipsis-h fs-24 text-dark"></i></p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ action('PostsController@edit', $post) }}"><i class="far fa-edit mr-2"></i>編集</a>
-                    <a class="dropdown-item" href="{{ action('UsersController@edit', Auth::user()->id) }}"><i class="far fa-trash-alt mr-2 fs-18"></i>削除</a>
+                    <a class="dropdown-item text-danger" href="{{ action('UsersController@edit', Auth::user()->id) }}"><i class="far fa-trash-alt mr-2 fs-18"></i>削除</a>
                 </div>
               </div>
               @endif
@@ -39,9 +39,7 @@
               @csrf
               <textarea name="body" id="" rows="4" class="mb-0" placeholder="コメントする...">{{ old('body') }}</textarea>
               <div class="text-right">
-                <!-- <label for="submit"><i class="far fa-paper-plane"></i></label>
-                <button type="submit" class="mr-1 display-none" name="submit"><i class="far fa-paper-plane"></i></button> -->
-                <input type="submit" value="&#xf1d8;" class="fas mr-3 fs-20 pr-2 pl-2">
+                <input type="submit" value="&#xf1d8;" class="fas mr-3 fs-20 pr-2 pl-2 commentbotton">
               </div>
             </form>
             <hr>
@@ -54,11 +52,19 @@
               <div class="col-6">
                 <img src="{{ $post->user->path }}" width="50px" height="50px" class="circle mr-2">{{ $post->user->name }}
               </div>
+              @if($post->user->id == Auth::user()->id)
               <div class="col-6">
-                <p class="text-right pt-2 pr-2"><i class="fas fa-ellipsis-h fs-24"></i></p>
+                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  <p class="text-right mb-0"><i class="fas fa-ellipsis-h fs-24 text-dark"></i></p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ action('CommentsController@edit', $comment) }}"><i class="far fa-edit mr-2"></i>編集</a>
+                    <a class="dropdown-item text-danger" href="{{ action('UsersController@edit', Auth::user()->id) }}"><i class="far fa-trash-alt mr-2 fs-18"></i>削除</a>
+                </div>
               </div>
+              @endif
             </div>
-            <p class="pl-3">{{ $comment->body }}</p>
+            <p class="pl-2 pt-2">{{ $comment->body }}</p>
             <hr>
             @empty
             <p>まだコメントはありません</p>

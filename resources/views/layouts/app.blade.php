@@ -80,11 +80,11 @@
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><img src="{{ Auth::user()->path }}" width="40px" height="40px" class="circle"></a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/home">マイページ</a>
-                                    <a class="dropdown-item" href="{{ action('UsersController@edit', Auth::user()->id) }}">プロフィール編集</a>
+                                    <a class="dropdown-item" href="/home"><i class="far fa-id-card mr-2"></i>マイページ</a>
+                                    <a class="dropdown-item" href="{{ action('UsersController@edit', Auth::user()->id) }}"><i class="far fa-edit mr-2"></i>プロフィール編集</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">ログアウト</a>
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt mr-2"></i>ログアウト</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
