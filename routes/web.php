@@ -33,5 +33,6 @@ Route::patch('/comments/{comment}', 'CommentsController@update');
 
 Route::get('/users/edit/{user}', 'UsersController@edit');
 Route::patch('/users/update', 'UsersController@update');
+Route::get('/users/search', 'UsersController@search');
 
 

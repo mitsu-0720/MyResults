@@ -36,4 +36,9 @@ class UsersController extends Controller
         $user->save();
         return redirect('/home');
     }
+
+    public function search() {
+        $users = User::latest()->get();
+        return view('users.search');
+    }
 }
