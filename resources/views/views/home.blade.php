@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
 
         <!-- プロフィール部分 -->
-        <!-- <section> -->
             <div class="col-md-2 bg-white d-flex align-items-center justify-content-center">
                 <img src="{{ Auth::user()->path }}" width="100px" height="100px" class="circle">
             </div>
@@ -14,7 +13,6 @@
                 <p>フォロー 0 フォロワー0 {{ count(Auth::user()->posts) }}件の投稿</p>
                 <p>{{ Auth::user()->detail }}</p>
             </div>
-        <!-- </section> -->
 
         <!-- 投稿部分 -->
         <div class="col-md-8 mt-4 bg-white">

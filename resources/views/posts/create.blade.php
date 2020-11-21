@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-8 bg-white pb-4">
-          <h1 class="text-center pt-4 pb-4">投稿</h1>
+          <h1 class="text-center mt-4 pb-4">投稿</h1>
 
           <form action="/posts" method="POST" enctype="multipart/form-data">
           @csrf

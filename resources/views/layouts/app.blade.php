@@ -71,7 +71,7 @@
                                 <a class="nav-link mt-2 mr-1" href="#"><i class="fas fa-user-friends text-dark fs-24"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mt-2 mr-1" href="{{ url('/users/search') }}"><i class="fas fa-search text-dark fs-24"></i></a>
+                                <a class="nav-link mt-2 mr-1" href="{{ url('/search/posts') }}"><i class="fas fa-search text-dark fs-24"></i></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mt-2 mr-1" href="#"><i class="fas fa-hashtag text-dark fs-24"></i></a>
