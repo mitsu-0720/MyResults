@@ -64,6 +64,10 @@ input[type="file"] {
   margin-left: 25px;
 }
 
+.p-relative {
+  position: relative;
+}
+
 .p-absolute {
   /* display: block; */
   position: absolute;
