@@ -29,7 +29,7 @@ if(token) {
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('like-component', require('./components/LikeComponent.vue').default);
+Vue.component('like-component', require('./components/LikeComponent.vue').default);
 // Vue.component('follow-component', require('./components/FollowComponent.vue').default);
 // Vue.component('guestlogin-component', require('./components/guestloginComponent.vue').default);
 // Vue.component('delete-component', require('./components/deleteComponent.vue').default);

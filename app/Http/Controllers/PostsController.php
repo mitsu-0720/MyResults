@@ -81,4 +81,9 @@ class PostsController extends Controller
         // session()->flash('flash_message', '投稿が完了しました');
         return redirect('/home');
     }
+
+    public function timeline() {
+        $posts = Post::latest()->get();
+        return view('posts.timeline')->with('posts', $posts);
+    }
 }

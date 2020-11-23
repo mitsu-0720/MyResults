@@ -26,10 +26,14 @@ Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/edit/{post}', 'PostsController@edit');
 Route::patch('/posts/{post}', 'PostsController@update');
+Route::get('/posts/timeline', 'PostsController@timeline');
 
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 Route::get('/comments/edit/{comment}', 'CommentsController@edit');
 Route::patch('/comments/{comment}', 'CommentsController@update');
+
+Route::post('/posts/{post}/like', 'LikeController@like');
+Route::post('/posts/{post}/unlike', 'LikeController@unlike');
 
 Route::get('/users/edit/{user}', 'UsersController@edit');
 Route::patch('/users/update', 'UsersController@update');

@@ -28,7 +28,14 @@
             <hr>
             <p>{{ $post->created_at->format('Y.m.d H:i') }}</p>
             <hr>
-            <p><i class="far fa-heart"></i> 0</p>
+            <p>
+              <!-- <i class="far fa-heart"></i> 0 -->
+              <like-component
+              :post-id = "{{ json_encode($post->id) }}"
+              :default-Liked = "{{ json_encode($defaultLiked) }}"
+              :default-Count = "{{ json_encode($defaultCount) }}"
+              ></like-component>
+          </p>
             <hr>
           </section>
             

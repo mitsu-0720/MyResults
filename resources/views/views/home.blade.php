@@ -8,9 +8,13 @@
             <div class="col-md-2 bg-white d-flex align-items-center justify-content-center">
                 <img src="{{ Auth::user()->path }}" width="100px" height="100px" class="circle">
             </div>
-            <div class="col-md-6 bg-info pl-4">
+            <div class="col-md-6 bg-white pl-4">
                 <h1 class="h4 pt-3">{{ Auth::user()->name }} ({{ Auth::user()->username }})</h1>
-                <p>フォロー 0 フォロワー0 {{ count(Auth::user()->posts) }}件の投稿</p>
+                <p>
+                    <span class="mr-2 bold">フォロー 0</span>
+                    <span class="mr-2 bold">フォロワー0</span>
+                    <span class="bold">{{ count(Auth::user()->posts) }}件の投稿</span>
+                </p>
                 <p>{{ Auth::user()->detail }}</p>
             </div>
 
@@ -41,6 +45,7 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                     @endforeach
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>

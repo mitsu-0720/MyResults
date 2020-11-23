@@ -68,7 +68,7 @@
                             <li class="nav-item">
                                 <a class="nav-link mt-2 mr-1" href="{{ action('PostsController@create') }}"><i class="fas fa-camera text-dark fs-24"></i></a>
                             <li class="nav-item">
-                                <a class="nav-link mt-2 mr-1" href="#"><i class="fas fa-user-friends text-dark fs-24"></i></a>
+                                <a class="nav-link mt-2 mr-1" href="{{ action('PostsController@timeline') }}"><i class="fas fa-user-friends text-dark fs-24"></i></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mt-2 mr-1" href="{{ url('/search/posts') }}"><i class="fas fa-search text-dark fs-24"></i></a>
