@@ -9,7 +9,7 @@
                 <div class="row">
 
                   <div class="col-6">
-                    <p><a href="{{ action('PostsController@show', $post) }}"><img src="{{ $post->user->path }}" width="50px" height="50px" class="circle mr-2">{{ $post->user->name }}</a></p>
+                    <p><a href="{{ action('UsersController@show', $post->user) }}"><img src="{{ $post->user->path }}" width="50px" height="50px" class="circle mr-2">{{ $post->user->name }}</a></p>
                   </div>
                   @if($post->user->id == Auth::user()->id)
                   <div class="col-6">

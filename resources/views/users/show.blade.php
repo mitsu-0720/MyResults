@@ -9,8 +9,23 @@
                 <img src="{{ $user->path }}" width="100px" height="100px" class="circle">
             </div>
             <div class="col-md-6 bg-info pl-4">
-                <h1 class="h4 pt-3">{{ $user->name }} ({{ $user->username }})</h1>
-                <p>フォロー 0 フォロワー0 {{ count($user->posts) }}件の投稿</p>
+                <h1 class="h4 pt-3">
+                    {{ $user->name }} ({{ $user->username }})
+
+                    <!-- 自分はフォローできないようにする -->
+                    @if(!($user->id == Auth::user()->id))
+                    <follow-component
+                    :user-id = "{{ json_encode($user->id) }}"
+                    :default-Followed = "{{ json_encode($defaultFollowed) }}"
+                    :default-Count = "{{ json_encode($defaultCount) }}"
+                    ></follow-component>
+                    @endif
+                </h1>
+                <p>
+                    <span class="mr-2 bold">フォロー {{ count($user->follows) }}</span>
+                    <span class="mr-2 bold">フォロワー {{ count($user->followUsers) }}</span>
+                    <span class="bold">{{ count($user->posts) }}件の投稿</span>
+                </p>
                 <p>{{ $user->detail }}</p>
             </div>
 

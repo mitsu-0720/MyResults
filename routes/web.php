@@ -42,4 +42,9 @@ Route::get('/users/profile/{user:username}', 'UsersController@show');
 Route::get('/search/users', 'SearchController@users');
 Route::get('/search/posts', 'SearchController@posts');
 
+Route::post('/users/{user}/follow', 'FollowUserController@follow');
+Route::post('/users/{user}/unfollow', 'FollowUserController@unfollow');
+Route::get('/users/{user}/following', 'UsersController@following');
+Route::get('/users/{user}/followers', 'UsersController@followers');
+
 

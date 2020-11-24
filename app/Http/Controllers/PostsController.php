@@ -84,6 +84,10 @@ class PostsController extends Controller
 
     public function timeline() {
         $posts = Post::latest()->get();
-        return view('posts.timeline')->with('posts', $posts);
+        $users = User::all();
+        return view('posts.timeline')->with([
+            'posts' => $posts,
+            'users' => $users,
+            ]);
     }
 }

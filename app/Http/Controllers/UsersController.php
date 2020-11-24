@@ -39,21 +39,29 @@ class UsersController extends Controller
 
     public function show(User $user) {
         $posts = Post::where('user_id', $user->id)->latest()->get();
-        // $likes = Like::where('user_id', $user->id)->get();
-        // $defaultCount = count($user->followUsers);
-        // $defaultFollowed = $user->followUsers->where('id', \Auth::user()->id)->first();
-        // if(empty($defaultFollowed)) {
-        //     $defaultFollowed = false;
-        // } else {
-        //     $defaultFollowed = true;
-        // }
+        $likes = Like::where('user_id', $user->id)->get();
+        $defaultCount = count($user->followUsers);
+        $defaultFollowed = $user->followUsers->where('id', \Auth::user()->id)->first();
+        if(empty($defaultFollowed)) {
+            $defaultFollowed = false;
+        } else {
+            $defaultFollowed = true;
+        }
         return view('users.show')->with([
             'user' => $user,
             'posts' => $posts,
-            // 'likes' => $likes,
-            // 'defaultFollowed' => $defaultFollowed,
-            // 'defaultCount' => $defaultCount,
+            'likes' => $likes,
+            'defaultFollowed' => $defaultFollowed,
+            'defaultCount' => $defaultCount,
         ]);
+    }
+
+    public function following(User $user) {
+        return view('users.following')->with('user', $user);
+    }
+
+    public function followers(User $user) {
+        return view('users.followers')->with('user', $user);
     }
 
 }

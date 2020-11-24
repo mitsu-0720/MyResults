@@ -11,7 +11,7 @@
             <div class="col-md-6 bg-white pl-4">
                 <h1 class="h4 pt-3">{{ Auth::user()->name }} ({{ Auth::user()->username }})</h1>
                 <p>
-                    <span class="mr-2 bold">フォロー 0</span>
+                    <span class="mr-2 bold">フォロー </span>
                     <span class="mr-2 bold">フォロワー0</span>
                     <span class="bold">{{ count(Auth::user()->posts) }}件の投稿</span>
                 </p>
