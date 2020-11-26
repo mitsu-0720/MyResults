@@ -13,6 +13,20 @@ use App\FollowUser;
 
 class UsersController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
+    public function index(User $user) {
+        $user = Auth::user();
+        $posts = Post::where('user_id', $user->id)->latest()->get();
+        return view('users.index')->with([
+            'user' => $user,
+            'posts' => $posts,
+            ]);
+    }
+
     public function edit(User $user) {
         return view('users.edit')->with('user', $user);
     }

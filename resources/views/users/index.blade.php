@@ -11,9 +11,8 @@
             <div class="col-md-6 bg-white pl-4">
                 <h1 class="h4 pt-3">{{ Auth::user()->name }} ({{ Auth::user()->username }})</h1>
                 <p>
-                    <span class="mr-2 bold"><a href="{{ action('UsersController@following', Auth::user()) }}">フォロー {{ count(Auth::user()->follows) }}</a></span>
-                    <span class="mr-2 bold"><a href="{{ action('UsersController@followers', Auth::user()) }}">フォロワー {{ count(Auth::user()->followUsers) }}</a></span>
-                    <!-- <span class="mr-2 bold">フォロワー0</span> -->
+                    <span class="mr-2 bold">フォロー {{ count(Auth::user()->follows) }}</span>
+                    <span class="mr-2 bold">フォロワー {{ count(Auth::user()->followUsers) }}</span>
                     <span class="bold">{{ count(Auth::user()->posts) }}件の投稿</span>
                 </p>
                 <p>{{ Auth::user()->detail }}</p>

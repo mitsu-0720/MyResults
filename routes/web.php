@@ -20,6 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'ViewsController@home');
+// Route::get('/users/profile/{username}', function($username = 'aaa') {
+//     return view('users.index');
+// });
 
 Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+');
 Route::get('/posts/create', 'PostsController@create');

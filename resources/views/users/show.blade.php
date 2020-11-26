@@ -22,8 +22,8 @@
                     @endif
                 </h1>
                 <p>
-                    <span class="mr-2 bold">フォロー {{ count($user->follows) }}</span>
-                    <span class="mr-2 bold">フォロワー {{ count($user->followUsers) }}</span>
+                    <span class="mr-2 bold"><a href="{{ action('UsersController@following', $user) }}">フォロー {{ count($user->follows) }}</a></span>
+                    <span class="mr-2 bold"><a href="{{ action('UsersController@followers', $user) }}">フォロワー {{ count($user->followUsers) }}</a></span>
                     <span class="bold">{{ count($user->posts) }}件の投稿</span>
                 </p>
                 <p>{{ $user->detail }}</p>
@@ -63,7 +63,25 @@
                     @endforelse
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                @forelse ($likes as $like)
+                    <div class="col-md-8 offset-md-2 pt-4">
+                        <a href="{{ action('PostsController@show', $like->post->id) }}"><img src="{{ $like->post->path }}" width="100%"></a>
+                        <div class="row justify-content-between">
+                            <div class="col-6 pl-4">
+                                <i class="fas fa-reply"></i> 0 <i class="fas fa-heart ml-2"></i> 0
+                            </div>
+                            <div class="col-6">
+                                <p class="mr-1 text-right">{{ $like->post->created_at->format('Y.m.d H:i') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div>
+                      <p>いいねした投稿はありません</p>
+                    </div>
+                    @endforelse
+                </div>
             </div>  
         </div>
     </div>
