@@ -97,6 +97,13 @@ textarea {
   width: 100%;
 }
 
+.tags-form {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 100%;
+}
+
 .circle {
   border-radius:50%;
 }

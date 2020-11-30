@@ -10,6 +10,7 @@ use App\Comment;
 use App\Http\Requests\CreatePostRequest;
 use Carbon\Carbon;
 use App\Like;
+use App\Tag;
 use \InterventionImage;
 
 class PostsController extends Controller
@@ -42,7 +43,11 @@ class PostsController extends Controller
     }
 
     public function store(Request $request) {
-        // $nowtime = Carbon::now();
+
+        $post = $request->validate([
+            'path' => 'required',
+            'detail' => 'required|max:200',
+        ]);
         $user = Auth::user();
         $file = $request->file('path');
         $filename = $file->getClientOriginalName();
@@ -51,7 +56,23 @@ class PostsController extends Controller
         // $img = InterventionImage::make($file);
         // dd($img->filesize());
 
-        $post = new Post();
+        $post = new Post;
+        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
+        // dd($match);
+        $tags = [];
+        foreach($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tags, $record);
+        }
+
+        $tags_id = [];
+        foreach($tags as $tag) {
+            array_push($tags_id, $tag['id']);
+        }
+        // dd($tags_id);
+        $post->tags()->attach($tags_id);
+
+        // $post = new Post;
         $post->user_id = Auth::user()->id;
         $post->path = '/storage/' . $filename;
         $post->detail = $request->detail;
