@@ -69,14 +69,13 @@ class PostsController extends Controller
         foreach($tags as $tag) {
             array_push($tags_id, $tag['id']);
         }
-        // dd($tags_id);
-        $post->tags()->attach($tags_id);
-
+        
         // $post = new Post;
         $post->user_id = Auth::user()->id;
         $post->path = '/storage/' . $filename;
         $post->detail = $request->detail;
         $post->save();
+        $post->tags()->attach($tags_id);
         // $user->posts()->save($post);
         // session()->flash('flash_message', '投稿が完了しました');
         return redirect('/home');
