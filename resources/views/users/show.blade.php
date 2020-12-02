@@ -49,7 +49,7 @@
                         <a href="{{ action('PostsController@show', $post) }}"><img src="{{ $post->path }}" width="100%"></a>
                         <div class="row justify-content-between">
                             <div class="col-6 pl-4">
-                                <i class="fas fa-reply"></i> 0 <i class="fas fa-heart ml-2"></i> 0
+                                <i class="fas fa-reply"></i> {{ count($post->comments) }} <i class="fas fa-heart ml-2"></i> {{ count($post->likes) }}
                             </div>
                             <div class="col-6">
                                 <p class="mr-1 text-right">{{ $post->created_at->format('Y.m.d H:i') }}</p>
@@ -62,14 +62,18 @@
                     </div>
                     @endforelse
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    {{-- @foreach($user->posts->tags as $tag)
+                    <span class="badge badge-pill badge-info">{{ $tag->name }}</span>
+                    @endforeach --}}
+                </div>
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 @forelse ($likes as $like)
                     <div class="col-md-8 offset-md-2 pt-4">
                         <a href="{{ action('PostsController@show', $like->post->id) }}"><img src="{{ $like->post->path }}" width="100%"></a>
                         <div class="row justify-content-between">
                             <div class="col-6 pl-4">
-                                <i class="fas fa-reply"></i> 0 <i class="fas fa-heart ml-2"></i> 0
+                                <i class="fas fa-reply"></i> {{ count($like->post->comments) }} <i class="fas fa-heart ml-2"></i> {{ count($like->post->likes) }}
                             </div>
                             <div class="col-6">
                                 <p class="mr-1 text-right">{{ $like->post->created_at->format('Y.m.d H:i') }}</p>
@@ -80,7 +84,7 @@
                     <div>
                       <p>いいねした投稿はありません</p>
                     </div>
-                    @endforelse
+                @endforelse
                 </div>
             </div>  
         </div>

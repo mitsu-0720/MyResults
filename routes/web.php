@@ -50,4 +50,6 @@ Route::post('/users/{user}/unfollow', 'FollowUserController@unfollow');
 Route::get('/users/{user}/following', 'UsersController@following');
 Route::get('/users/{user}/followers', 'UsersController@followers');
 
+Route::get('/tags/{tag:name}', 'TagsController@show');
+
 

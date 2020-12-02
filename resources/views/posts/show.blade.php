@@ -25,6 +25,9 @@
             </div>
             <img src="{{ $post->path }}" width="100%">
             <p class="mt-2">{{ $post->detail }}</p>
+            @foreach($post->tags as $tag)
+            <a href="{{ action('TagsController@show', $tag) }}"><span class="badge badge-pill badge-info">{{ $tag->name }}</span></a>
+            @endforeach
             <hr>
             <p>{{ $post->created_at->format('Y.m.d H:i') }}</p>
             <hr>
