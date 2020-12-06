@@ -64,6 +64,29 @@ input[type="file"] {
   margin-left: 25px;
 }
 
+.overlay {
+  z-index:10;
+
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100%;
+  background-color:rgba(0,0,0,0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog{
+  z-index:20;
+  width:30%;
+  padding: 1em;
+  background:#fff;
+  border-radius: 10px;
+}
+
 .p-relative {
   position: relative;
 }
@@ -88,6 +111,7 @@ a {
 a:hover {
   opacity: 0.8;
   text-decoration: none;
+  cursor: pointer;
 }
 
 textarea {

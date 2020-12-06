@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 bg-white pt-4">
+          <h1 class="text-center mb-4">タイムライン</h1>
             @foreach($posts as $post)
               <div class="col-md-8 offset-md-2">
                 <div class="row">
-
                   <div class="col-6">
                     <p><a href="{{ action('UsersController@show', $post->user) }}"><img src="{{ $post->user->path }}" width="50px" height="50px" class="circle mr-2">{{ $post->user->name }}</a></p>
                   </div>

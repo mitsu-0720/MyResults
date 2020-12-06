@@ -23,6 +23,8 @@ Route::get('/home', 'ViewsController@home');
 // Route::get('/users/profile/{username}', function($username = 'aaa') {
 //     return view('users.index');
 // });
+Route::get('/login/guest', 'Auth\LoginController@guestLogin');
+
 
 Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+');
 Route::get('/posts/create', 'PostsController@create');
@@ -51,5 +53,6 @@ Route::get('/users/{user}/following', 'UsersController@following');
 Route::get('/users/{user}/followers', 'UsersController@followers');
 
 Route::get('/tags/{tag:name}', 'TagsController@show');
+Route::get('/tags/search', 'TagsController@search');
 
 

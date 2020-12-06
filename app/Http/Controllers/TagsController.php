@@ -16,4 +16,8 @@ class TagsController extends Controller
             'posts' => $posts,
         ]);
     }
+
+    public function search() {
+        return view('tags.search');
+    }
 }
