@@ -5,6 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8 bg-white pt-4">
           <h1 class="text-center mb-4">タイムライン</h1>
+          <p class="text-center">フォローしたユーザーの投稿が表示されます</p>
+          <hr>
             @foreach($posts as $post)
               <div class="col-md-8 offset-md-2">
                 <div class="row">

@@ -17,7 +17,18 @@ class TagsController extends Controller
         ]);
     }
 
-    public function search() {
-        return view('tags.search');
+    public function search(Request $request) {
+        $keyword = $request->input('keyword');
+        $query = Tag::query();
+        if(!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+        $data = $query->orderBy('created_at', 'desc')->get();
+        $tags = Tag::all();
+        return view('tags.search')->with([
+            'tags' => $tags,
+            'data' => $data,
+            'keyword' => $keyword,
+            ]);
     }
 }

@@ -17,8 +17,12 @@
                   <p class="text-right mb-0 mt-1"><i class="fas fa-ellipsis-h fs-24 text-dark"></i></p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ action('PostsController@edit', $post) }}"><i class="far fa-edit mr-2"></i>編集</a>
-                    <a class="dropdown-item text-danger" href="{{ action('UsersController@edit', Auth::user()->id) }}"><i class="far fa-trash-alt mr-2 fs-18"></i>削除</a>
+                    <a class="dropdown-item" href="{{ action('PostsController@edit', $post) }}">編集</a>
+                    <form method="post" action="{{ url('/posts', $post->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="dropdown-item text-danger" href="{{ action('PostsController@destroy', $post) }}" value="削除" onclick='return confirm("この投稿を本当に削除しますか？");'>
+                    </form>
                 </div>
               </div>
               @endif

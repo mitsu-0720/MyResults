@@ -19,7 +19,9 @@
             </div>
 
             @foreach($user->followUsers as $follower)
-            <p><img src="" alt=""></p>
+            <p><a href="{{ action('UsersController@show', $follower) }}"><img src="{{ $follower->path }}" width="50px height="50px class="circle mr-2">{{ $follower->name }}</a></p>
+            <p>{{ $follower->detail }}</p>
+            <hr>
             @endforeach
 
         </div>

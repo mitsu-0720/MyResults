@@ -11,6 +11,7 @@ use App\Http\Requests\CreatePostRequest;
 use Carbon\Carbon;
 use App\Like;
 use App\Tag;
+use App\FollowUser;
 use \InterventionImage;
 
 class PostsController extends Controller
@@ -102,12 +103,20 @@ class PostsController extends Controller
         return redirect('/home');
     }
 
+    public function destroy(Post $post) {
+        $post->delete();
+        return redirect('/home');
+    }
+
     public function timeline() {
-        $posts = Post::latest()->get();
-        $users = User::all();
+        // $followUsers = Auth::user()->follows()->get();
+        $posts = Post::query()->whereIn('user_id', Auth::user()->follows()->pluck('followed_user_id'))->orWhere('user_id', Auth::user()->id)->latest()->get();
+        // dd(Auth::user()->follows()->pluck('followed_user_id'));
+        // dd($posts);
+        // $posts = Post::latest()->get();
         return view('posts.timeline')->with([
             'posts' => $posts,
-            'users' => $users,
+            // 'followUsers' => $followUsers,
             ]);
     }
 }

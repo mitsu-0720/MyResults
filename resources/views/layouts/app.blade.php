@@ -75,7 +75,7 @@
                                 <a class="nav-link mt-2 mr-1" href="{{ url('/search/posts') }}"><i class="fas fa-search text-dark fs-24"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mt-2 mr-1" href="{{ url('/tags/search') }}"><i class="fas fa-hashtag text-dark fs-24"></i></a>
+                                <a class="nav-link mt-2 mr-1" href="{{ url('/search/tags') }}"><i class="fas fa-hashtag text-dark fs-24"></i></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><img src="{{ Auth::user()->path }}" width="40px" height="40px" class="circle"></a>

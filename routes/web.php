@@ -31,6 +31,7 @@ Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/edit/{post}', 'PostsController@edit');
 Route::patch('/posts/{post}', 'PostsController@update');
+Route::delete('/posts/{post}', 'PostsController@destroy');
 Route::get('/posts/timeline', 'PostsController@timeline');
 
 Route::post('/posts/{post}/comments', 'CommentsController@store');
@@ -42,7 +43,8 @@ Route::post('/posts/{post}/unlike', 'LikeController@unlike');
 
 Route::get('/users/edit/{user}', 'UsersController@edit');
 Route::patch('/users/update', 'UsersController@update');
-Route::get('/users/profile/{user:username}', 'UsersController@show');
+// Route::get('/users/profile/{user:username}', 'UsersController@show');
+Route::get('/users/profile/{user}', 'UsersController@show');
 
 Route::get('/search/users', 'SearchController@users');
 Route::get('/search/posts', 'SearchController@posts');
@@ -53,6 +55,6 @@ Route::get('/users/{user}/following', 'UsersController@following');
 Route::get('/users/{user}/followers', 'UsersController@followers');
 
 Route::get('/tags/{tag:name}', 'TagsController@show');
-Route::get('/tags/search', 'TagsController@search');
+Route::get('/search/tags', 'TagsController@search');
 
 
