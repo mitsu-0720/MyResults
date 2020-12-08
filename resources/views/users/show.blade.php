@@ -61,6 +61,7 @@
                       <p>まだ投稿はありません</p>
                     </div>
                     @endforelse
+                    {{ $posts->links('vendor.pagination.sample-pagination') }}
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     {{-- @foreach($user->posts->tags as $tag)
@@ -85,6 +86,7 @@
                       <p>いいねした投稿はありません</p>
                     </div>
                 @endforelse
+                {{ $likes->links('vendor.pagination.sample-pagination') }}
                 </div>
             </div>  
         </div>

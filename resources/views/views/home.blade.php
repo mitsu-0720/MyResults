@@ -20,7 +20,7 @@
             </div>
 
         <!-- 投稿部分 -->
-        <div class="col-md-8 mt-4 bg-white">
+        <!-- <div class="col-md-8 mt-4 bg-white">
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">投稿</a>
@@ -59,6 +59,6 @@
             <a href="{{ action('PostsController@create') }}" class="p-absolute">
                 <i class="fas fa-plus text-white fs-32"></i>
             </a>
-        </div>
+        </div> -->
 
 @endsection

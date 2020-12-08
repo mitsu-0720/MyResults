@@ -52,8 +52,8 @@ class UsersController extends Controller
     }
 
     public function show(User $user) {
-        $posts = Post::where('user_id', $user->id)->latest()->get();
-        $likes = Like::where('user_id', $user->id)->get();
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(5);
+        $likes = Like::where('user_id', $user->id)->paginate(2);
         $defaultCount = count($user->followUsers);
         $defaultFollowed = $user->followUsers->where('id', \Auth::user()->id)->first();
         if(empty($defaultFollowed)) {
