@@ -38,6 +38,24 @@ body {
   padding: 0 50px;
 }
 
+.select-btn-mini {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 14px;
+  /* padding: 0.25em 0.5em; */
+  text-decoration: none;
+  color: #fff;
+  background: #00bcd4;
+  transition: .4s;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.active-select {
+  border-bottom: 5px solid #f0f;
+}
+
 input[type="file"] {
   display: none;
 }
@@ -106,6 +124,10 @@ button a {
 
 a {
   color: gray;
+}
+
+p {
+  margin-bottom: 0;
 }
 
 a:hover {
