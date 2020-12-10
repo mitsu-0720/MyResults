@@ -52,8 +52,8 @@ class UsersController extends Controller
     }
 
     public function show(User $user) {
-        $posts = Post::where('user_id', $user->id)->latest()->paginate(5);
-        $likes = Like::where('user_id', $user->id)->paginate(2);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(10);
+        // $likes = Like::where('user_id', $user->id)->get();
         $defaultCount = count($user->followUsers);
         $defaultFollowed = $user->followUsers->where('id', \Auth::user()->id)->first();
         if(empty($defaultFollowed)) {
@@ -64,9 +64,23 @@ class UsersController extends Controller
         return view('users.show')->with([
             'user' => $user,
             'posts' => $posts,
-            'likes' => $likes,
+            // 'likes' => $likes,
             'defaultFollowed' => $defaultFollowed,
             'defaultCount' => $defaultCount,
+        ]);
+    }
+
+    public function like(User $user) {
+        $likes = Like::where('user_id', $user->id)->paginate(10);
+        return view('users.like')->with([
+            'user' => $user,
+            'likes' => $likes,
+        ]);
+    }
+
+    public function tag(User $user) {
+        return view('users.tag')->with([
+            'user' => $user,
         ]);
     }
 

@@ -35,14 +35,14 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="row">
-        <div class="col-4 bg-white text-center border-right active-select">
+        <div class="col-4 bg-white text-center border-right border-bottom">
           <p class="fs-20">
             <a href="{{ action('UsersController@show', $user) }}"><i class="fas fa-pen fs-20 mr-2"></i>投稿</a>
         </p>
         </div>
-        <div class="col-4 bg-white text-center border-right border-bottom">
+        <div class="col-4 bg-white text-center border-right active-select">
           <p class="fs-20">
-            <a href=""><i class="fas fa-hashtag fs-20 mr-2"></i>タグ</a>
+            <a href="{{ action('UsersController@tag', $user) }}"><i class="fas fa-hashtag fs-20 mr-2"></i>タグ</a>
           </p>
         </div>
         <div class="col-4 bg-white text-center border-bottom">
@@ -57,24 +57,8 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8 pt-4 bg-white">
-      @forelse($posts as $post)
-      <div class="col-md-8 offset-md-2 mt-2">
-        <a href="{{ action('PostsController@show', $post) }}"><img src="{{ $post->path }}" width="100%"></a>
-        <div class="row justify-content-between">
-            <div class="col-6 pl-4">
-                <i class="fas fa-reply"></i> {{ count($post->comments) }} <i class="fas fa-heart ml-2"></i> {{ count($post->likes) }}
-            </div>
-            <div class="col-6">
-                <p class="mr-1 text-right">{{ $post->created_at->format('Y.m.d H:i') }}</p>
-            </div>
-        </div>
-      </div>
-      <hr>
-      @empty
-      <p>まだ投稿はありません</p>
-      @endforelse
-      {{ $posts->links('vendor.pagination.sample-pagination') }}
+    <div class="col-md-8 bg-white">
+      <p class="fs-20 mt-3">{{ $user->name }}さんのタグ一覧</p>
     </div>
   </div>
 </div>
