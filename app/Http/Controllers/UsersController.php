@@ -9,6 +9,7 @@ use App\User;
 use App\Http\Requests\CreatePostRequest;
 use Carbon\Carbon;
 use App\Like;
+use App\Tag;
 use App\FollowUser;
 
 class UsersController extends Controller
@@ -72,15 +73,45 @@ class UsersController extends Controller
 
     public function like(User $user) {
         $likes = Like::where('user_id', $user->id)->paginate(10);
+        $defaultCount = count($user->followUsers);
+        $defaultFollowed = $user->followUsers->where('id', \Auth::user()->id)->first();
+        if(empty($defaultFollowed)) {
+            $defaultFollowed = false;
+        } else {
+            $defaultFollowed = true;
+        }
         return view('users.like')->with([
             'user' => $user,
             'likes' => $likes,
+            'defaultFollowed' => $defaultFollowed,
+            'defaultCount' => $defaultCount,
         ]);
     }
 
     public function tag(User $user) {
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(30);
+        $defaultCount = count($user->followUsers);
+        $defaultFollowed = $user->followUsers->where('id', \Auth::user()->id)->first();
+        if(empty($defaultFollowed)) {
+            $defaultFollowed = false;
+        } else {
+            $defaultFollowed = true;
+        }
+        
+        foreach($posts as $post) {
+            $tags = $post->tags()->orderby('tag_id')->get();
+            $tagName = [];
+            foreach($tags as $tagRecord) {
+                $tagName[] = $tagRecord->name;
+            }
+            $post['tags'] = $tagName;
+        }
+        
         return view('users.tag')->with([
             'user' => $user,
+            'posts' => $posts,
+            'defaultFollowed' => $defaultFollowed,
+            'defaultCount' => $defaultCount,
         ]);
     }
 

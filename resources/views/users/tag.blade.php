@@ -58,7 +58,12 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8 bg-white">
-      <p class="fs-20 mt-3">{{ $user->name }}さんのタグ一覧</p>
+      <p class="fs-20 mt-3 mb-3">{{ $user->name }}さんのタグ一覧</p>
+      @foreach($posts as $post)
+        @foreach($post->tags as $tag)
+        <p><a href="{{ action('TagsController@show', $tag) }}"><span class="badge badge-pill badge-info fs-20 mb-2">{{ $tag }}</span></a></p>
+        @endforeach
+      @endforeach
     </div>
   </div>
 </div>

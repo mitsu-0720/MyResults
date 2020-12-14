@@ -42,7 +42,7 @@
         </div>
         <div class="col-4 bg-white text-center border-right border-bottom">
           <p class="fs-20">
-            <a href=""><i class="fas fa-hashtag fs-20 mr-2"></i>タグ</a>
+            <a href="{{ action('UsersController@tag', $user) }}"><i class="fas fa-hashtag fs-20 mr-2"></i>タグ</a>
           </p>
         </div>
         <div class="col-4 bg-white text-center border-bottom">
