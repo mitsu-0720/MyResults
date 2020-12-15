@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use App\Like;
 use App\Tag;
 use App\FollowUser;
+use App\Http\Requests\PostRequest;
+use App\Http\Requests\EditRequest;
 use \InterventionImage;
 
 class PostsController extends Controller
@@ -43,7 +45,7 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request) {
+    public function store(PostRequest $request) {
 
         $post = $request->validate([
             'path' => 'required',
@@ -76,7 +78,7 @@ class PostsController extends Controller
         $post->path = '/storage/' . $filename;
         $post->detail = $request->detail;
         $post->save();
-        $post->tags()->attach($tags_id);
+        $post->tags()->sync($tags_id);
         // $user->posts()->save($post);
         // session()->flash('flash_message', '投稿が完了しました');
         return redirect('/home');
@@ -86,7 +88,7 @@ class PostsController extends Controller
         return view('posts.edit')->with('post', $post);
     }
 
-    public function update(Request $request, Post $post) {
+    public function update(EditRequest $request, Post $post) {
         // 画像変更の確認
         if(!empty($request->path)) {
             $file = $request->file('path');
@@ -96,8 +98,23 @@ class PostsController extends Controller
         }else {
             $post->path = $post->path;
         }
+
+        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
+        // dd($match);
+        $tags = [];
+        foreach($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tags, $record);
+        }
+
+        $tags_id = [];
+        foreach($tags as $tag) {
+            array_push($tags_id, $tag['id']);
+        }
+
         $post->detail = $request->detail;
         $post->save();
+        $post->tags()->sync($tags_id);
         // $user->posts()->save($post);
         // session()->flash('flash_message', '投稿が完了しました');
         return redirect('/home');
