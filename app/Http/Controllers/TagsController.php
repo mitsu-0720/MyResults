@@ -17,6 +17,16 @@ class TagsController extends Controller
         ]);
     }
 
+    public function userTag (Tag $tag , User $user) {
+        // $posts = Post::where('tag_id', $tag->id)->get();
+        $posts = Tag::find($tag->id)->posts()->latest()->get();
+        return view('tags.userTag')->with([
+            'tag' => $tag,
+            'posts' => $posts,
+            'user' => $user,
+        ]);
+    }
+
     public function search(Request $request) {
         $keyword = $request->input('keyword');
         $query = Tag::query();

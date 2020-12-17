@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 bg-white">
           <h1 class="text-center mt-4">タグ一覧</h1>
-          <p class="text-center">好きなゲームのハッシュタグを調べてみよう！</p>
+          <p class="text-center">興味があるハッシュタグを調べてみよう！</p>
 
           <div class="form-group mt-4 text-center">
             <form class="" action="{{ url('/search/tags') }}">

@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('views.index');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', 'ViewsController@home');
+Route::get('/home', 'ViewsController@home')->middleware('verified');
 // Route::get('/users/profile/{username}', function($username = 'aaa') {
 //     return view('users.index');
 // });
@@ -58,5 +58,6 @@ Route::get('/users/{user}/followers', 'UsersController@followers');
 
 Route::get('/tags/{tag:name}', 'TagsController@show');
 Route::get('/search/tags', 'TagsController@search');
+// Route::get('/tags/{user:username}/{tag:name}', 'TagsController@userTag');
 
 

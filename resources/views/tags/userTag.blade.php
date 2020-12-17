@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 bg-white">
-          <p class="fs-24 mb-4"><span class="badge badge-pill badge-info fs-24 mt-3">{{ $tag->name }}</span>の投稿</p>
+          <p class="fs-24 mb-4">{{ $user->name }}→<span class="badge badge-pill badge-info fs-24 mt-3">{{ $tag->name }}</span></p>
           @foreach($posts as $post)
           <div class="col-md-10 offset-md-1">
               <p class="mb-2"><a href="{{ action('UsersController@show', $post->user) }}"><img src="{{ $post->user->path }}" width="50px" height="50px" class="circle mr-2">{{ $post->user->name }}</a></p>
